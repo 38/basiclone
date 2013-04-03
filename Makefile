@@ -1,6 +1,6 @@
 CPPFLAGS=`sdl-config --cflags` -Wall
 CFLAGS= -g 
-LDFLAGS=`sdl-config --libs` -lSDL_ttf 
+LDFLAGS=`sdl-config --libs` -lSDL_ttf -lm
 TARGET=basiclone
 all:list $(TARGET)
 
