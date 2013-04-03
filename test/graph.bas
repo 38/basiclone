@@ -1,0 +1,26 @@
+0 REM 这是一个绘制函数图像的demo
+1 REM 用到了一些非标准的扩充语句和变量
+2 REM 	__DELAY <time>设置每条语句的延迟时间
+3 REM 	__EXECUTE <string> 将字符串解析为代码
+4 REM	__LASTERRNO 最后一次的错误代码
+5 REM	__LASTERR$  最后一次错误的描述
+10 TEXT
+20 LOCATE 3,5
+30 INPUT "f(x)=";TF$
+31 FOR I=1 TO LEN(TF$)
+32 C$=MID$(TF$,I,1)
+33 IF C$>="a" AND C$<="z" THEN C$=CHR$(ASC(C$)-32)
+34 F$=F$+C$
+35 NEXT
+40 GRAPH:CLS
+50 X0=80:Y0=40:RX=5:RY=2.5
+60 LINE X0,0,X0,80
+70 LINE 0,Y0,160,Y0
+80 FOR X=-5 TO 5 STEP 0.01
+90 __EXECUTE "Y="+F$
+95 IF __LASTERRNO<>0 THEN PRINT __LASTERR$;" ERROR":END
+100 PX=X/RX*80+X0
+110 PY=-Y/RY*40+Y0
+120 DRAW PX,PY
+130 NEXT
+140 END

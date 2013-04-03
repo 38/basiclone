@@ -1,0 +1,15 @@
+10 DIM A$(10),B$(10),C$(10),N(10)
+20 INPUT N(0)
+30 A$(0)="A":B$(0)="B":C$(0)="C":L=0
+40 GOSUB 100
+50 END
+100 IF N(L)=0 THEN RETURN
+110 A$(L+1)=A$(L):B$(L+1)=C$(L):C$(L+1)=B$(L):N(L+1)=N(L)-1:L=L+1
+120 GOSUB 100
+130 L=L-1
+140 PRINT A$(L);"->";C$(L):K$=INKEY$
+150 A$(L+1)=B$(L):B$(L+1)=A$(L):C$(L+1)=C$(L):N(L+1)=N(L)-1:L=L+1
+160 GOSUB 100
+170 L=L-1
+180 RETURN
+
